@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="heliport" size="512.000000 512.000000" />
     <ImageTarget name="helicopter" size="512.000000 512.000000" />
     <ImageTarget name="airport" size="512.000000 512.000000" />
+    <ImageTarget name="heliport" size="512.000000 512.000000" />
     <ImageTarget name="aircontrol" size="512.000000 512.000000" />
+    <ImageTarget name="small_aircraft" size="512.000000 512.000000" />
+    <ImageTarget name="small_airport" size="512.000000 512.000000" />
   </Tracking>
 </QCARConfig>
