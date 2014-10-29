@@ -77,6 +77,7 @@
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\WireframeTrackableEventHandler.cs" />
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\WordBehaviour.cs" />
      <Compile Include="Assets\Scripts\MyDragBehaviour.cs" />
+     <None Include="Assets\Models\Small Airport\International Airport Scenery.fbx.txt" />
      <None Include="Assets\Qualcomm Augmented Reality\Shaders\VertexLitWithZ.shader" />
      <None Include="Assets\license_3rdpartynotice.txt" />
      <None Include="Assets\Models\Small Airport\Maps\readme.txt" />
