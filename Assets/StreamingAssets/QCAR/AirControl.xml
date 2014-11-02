@@ -3,10 +3,11 @@
   <Tracking>
     <ImageTarget name="helicopter" size="512.000000 512.000000" />
     <ImageTarget name="airport" size="512.000000 512.000000" />
-    <ImageTarget name="small_aircraft" size="512.000000 512.000000" />
     <ImageTarget name="heliport" size="512.000000 512.000000" />
-    <ImageTarget name="aircontrol" size="512.000000 512.000000" />
-    <ImageTarget name="small_airport" size="512.000000 512.000000" />
+    <ImageTarget name="small_aircraft" size="512.000000 512.000000" />
     <ImageTarget name="bus" size="512.000000 512.000000" />
+    <ImageTarget name="commercial_jet" size="500.000000 500.000000" />
+    <ImageTarget name="small_airport" size="512.000000 512.000000" />
+    <ImageTarget name="terrain" size="500.000000 500.000000" />
   </Tracking>
 </QCARConfig>
