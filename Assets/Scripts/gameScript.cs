@@ -3,9 +3,12 @@ using System.Collections;
 
 public class gameScript : MonoBehaviour {
 	string state = "waiting";
+	HitsText hitsText;
 
 
 	void Start () {
+		hitsText = (HitsText)GameObject.Find ("HitsText").GetComponent (typeof(HitsText));
+
 	
 	}
 	
@@ -16,7 +19,6 @@ public class gameScript : MonoBehaviour {
 
 	public void startGame(){
 		state = "started";
-		Debug.Log ("Game Started");
 
 	}
 }
