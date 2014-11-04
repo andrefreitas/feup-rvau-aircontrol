@@ -9,11 +9,13 @@ public class gameScript : MonoBehaviour {
 	public bool isHeliportPlaced = false;
 	public bool isSmallAirportPlaced = false;
 
-	HitsText hitsText;
+	// GUI
+	GUIScript gui;
 
 
 	void Start () {
-		hitsText = (HitsText)GameObject.Find ("HitsText").GetComponent (typeof(HitsText));
+		gui = (GUIScript)GameObject.Find ("GUI").GetComponent (typeof(GUIScript));
+
 
 	
 	}
@@ -29,6 +31,32 @@ public class gameScript : MonoBehaviour {
 	}
 
 	public bool allRunwaysPlaced(){
-		return isAirportPlaced && isHeliportPlaced && isSmallAirportPlaced;
+		return (isAirportPlaced && isHeliportPlaced && isSmallAirportPlaced);
+	}
+
+	public void heliportIsPlaced(){
+		isHeliportPlaced = true;
+		Debug.Log ("Heliport is placed");
+		checkIfCanStartGame ();
+	}
+
+	public void airportIsPlaced(){
+		isAirportPlaced = true;
+		Debug.Log ("Airport is placed");
+		checkIfCanStartGame ();
+	}
+
+	public void smallAirportPlaced(){
+		isSmallAirportPlaced = true;
+		Debug.Log ("Small Airport is placed");
+		checkIfCanStartGame ();
+	}
+
+	public void checkIfCanStartGame(){
+		if (allRunwaysPlaced ()) {
+			Debug.Log ("Can start");
+		} else {
+			Debug.Log("Cannot start");
+		}
 	}
 }

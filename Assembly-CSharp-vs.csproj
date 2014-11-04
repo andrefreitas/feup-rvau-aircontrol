@@ -76,9 +76,13 @@
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\WireframeBehaviour.cs" />
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\WireframeTrackableEventHandler.cs" />
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\WordBehaviour.cs" />
+     <Compile Include="Assets\Scripts\AirportScript.cs" />
+     <Compile Include="Assets\Scripts\GUIScript.cs" />
      <Compile Include="Assets\Scripts\HitsText.cs" />
      <Compile Include="Assets\Scripts\MyDragBehaviour.cs" />
+     <Compile Include="Assets\Scripts\SmallAirportScript.cs" />
      <Compile Include="Assets\Scripts\gameScript.cs" />
+     <Compile Include="Assets\Scripts\heliportScript.cs" />
      <Compile Include="Assets\Scripts\terrainScript.cs" />
      <None Include="Assets\Models\Small Airport\International Airport Scenery.fbx.txt" />
      <None Include="Assets\Qualcomm Augmented Reality\Shaders\VertexLitWithZ.shader" />
