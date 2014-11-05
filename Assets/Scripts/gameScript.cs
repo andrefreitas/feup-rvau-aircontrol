@@ -55,6 +55,8 @@ public class gameScript : MonoBehaviour {
 	public void checkIfCanStartGame(){
 		if (allRunwaysPlaced ()) {
 			Debug.Log ("Can start");
+			gui.message = "Começou o jogo!";
+			gui.showScore = true;
 		} else {
 			Debug.Log("Cannot start");
 		}

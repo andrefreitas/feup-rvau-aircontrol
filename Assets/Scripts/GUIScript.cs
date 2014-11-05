@@ -7,11 +7,14 @@ public class GUIScript : MonoBehaviour {
 	GUIStyle scoreStyle;
 	public Texture2D messageTexture;
 	public Texture2D scoreTexture;
+	public string message;
+	public int score = 0;
+	public bool showScore = false;
 	
 
 	// Use this for initialization
 	void Start () {
-
+		message = "Coloque os marcadores";
 		initStyles ();
 
 
@@ -49,13 +52,19 @@ public class GUIScript : MonoBehaviour {
 
 	void OnGUI () {
 
+		if (showScore) {
+			displayScore (score);
+		} else {
+			displayMessage (message);
+		}
+
 	}
 
-	void displayScore(int score){
+	public void displayScore(int score){
 		GUI.Label(new Rect(50, 50, 698, 200), score.ToString() + " pontos", scoreStyle);
 	}
 
-	void displayMessage(string message){
+	public void displayMessage(string message){
 		GUI.Label(new Rect(100, 100, 1397, 202), message, messagesStyle);
 	}
 }
