@@ -10,6 +10,7 @@ public class GUIScript : MonoBehaviour {
 	public string message;
 	public int score = 0;
 	public bool showScore = false;
+	gameScript game;
 	
 
 	// Use this for initialization
@@ -17,6 +18,7 @@ public class GUIScript : MonoBehaviour {
 		message = "Coloque os marcadores";
 		initStyles ();
 
+		game = (gameScript)GameObject.Find ("GameScript").GetComponent (typeof(gameScript));
 
 
 	
@@ -54,9 +56,28 @@ public class GUIScript : MonoBehaviour {
 
 		if (showScore) {
 			displayScore (score);
+
+		
 		} else {
 			displayMessage (message);
 		}
+
+		if(GUI.RepeatButton(new Rect(Screen.width - 350, Screen.height - 250, 100, 100 ), " Left ")) {
+			game.controlPlane("left");
+		}
+
+		if(GUI.RepeatButton(new Rect(Screen.width - 150, Screen.height - 250, 100, 100 ), " Right ")) {
+			game.controlPlane("right");
+		}
+
+		if(GUI.RepeatButton(new Rect(Screen.width - 250, Screen.height - 350, 100, 100 ), " Down ")) {
+			game.controlPlane("down");
+		}
+
+		if(GUI.RepeatButton(new Rect(Screen.width - 250, Screen.height - 150, 100, 100 ), " Up ")) {
+			game.controlPlane("up");
+		}
+
 
 	}
 

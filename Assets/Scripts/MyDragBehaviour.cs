@@ -27,14 +27,19 @@ public class MyDragBehaviour : MonoBehaviour
 				Debug.Log("Touch phase began at: " + touch.position);
 				
 				RaycastHit hit = new RaycastHit();
+
 				if (Physics.Raycast(ray, out hit, maxPickingDistance)) 
 				{ 
-					pickedObject = hit.transform;                    
+					pickedObject = hit.transform;
+					Debug.Log("Name of collider: " + hit.collider.name);
 				} 
 				else
 				{
 					pickedObject = null;
+					Debug.Log("Name of collider: " + hit.collider.name);
 				}
+
+
 			} 
 			else if (touch.phase == TouchPhase.Moved) 
 			{
