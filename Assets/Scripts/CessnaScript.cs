@@ -9,32 +9,11 @@ public class CessnaScript : MonoBehaviour {
 	void Start () {
 		speed = 1200;
 		state = "off";
-	
 	}
 
 	void Update () {
-
 		if (state == "on") {
 			forward (speed, gameObject);
-			keyboardControl();
-		}
-
-	}
-
-
-	void keyboardControl(){
-		float horizontal = Input.GetAxis ("Horizontal");
-		if (horizontal > 0) {
-			headLeft (50, gameObject);
-		} else if (horizontal < 0) {
-			headRight (50, gameObject);
-		}
-		float vertical = Input.GetAxis ("Vertical");
-
-		if (vertical > 0) {
-			down(50, gameObject);
-		} else if (vertical < 0) {
-			up (50, gameObject);
 		}
 	}
 
@@ -42,8 +21,7 @@ public class CessnaScript : MonoBehaviour {
 		audio.Play ();
 		state = "on";
 	}
-
-
+	
 	public void forward(float speed, GameObject go){
 		go.transform.Translate (speed * Time.deltaTime, 0 , 0);
 	}

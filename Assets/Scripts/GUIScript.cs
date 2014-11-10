@@ -8,23 +8,21 @@ public class GUIScript : MonoBehaviour {
 	public Texture2D messageTexture;
 	public Texture2D scoreTexture;
 	public string message;
-	public int score = 0;
+	public int score;
 	public bool showScore = false;
-	gameScript game;
+	GameScript game;
 	
 
 	// Use this for initialization
 	void Start () {
 		message = "Coloque os marcadores";
 		initStyles ();
+		game = (GameScript)GameObject.Find ("GameScript").GetComponent (typeof(GameScript));
 
-		game = (gameScript)GameObject.Find ("GameScript").GetComponent (typeof(gameScript));
-
-
-	
 	}
 
 	void initStyles(){
+		// Messages
 		messagesStyle = new GUIStyle ();
 		messagesStyle.fontSize = 80;
 		messagesStyle.richText = true;
@@ -33,6 +31,7 @@ public class GUIScript : MonoBehaviour {
 		messagesStyle.padding = new RectOffset(300,0, 55, 20);
 		messagesStyle.alignment = TextAnchor.UpperLeft;
 
+		// Score
 		scoreStyle = new GUIStyle ();
 		scoreStyle.fontSize = 80;
 		scoreStyle.richText = true;
@@ -41,41 +40,31 @@ public class GUIScript : MonoBehaviour {
 		scoreStyle.padding = new RectOffset(0,0, 55, 20);
 		scoreStyle.alignment = TextAnchor.UpperCenter;
 
-
-
-
 	}
-
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	void OnGUI () {
 
 		if (showScore) {
-			displayScore (score);
-
-		
+			score = game.getScore();
+			displayScore (score);		
 		} else {
-			displayMessage (message);
+			displayMessage ("Coloque os marcadores");
 		}
 
 		if(GUI.RepeatButton(new Rect(Screen.width - 350, Screen.height - 250, 100, 100 ), " Left ")) {
-			game.controlPlane("left");
+			game.control("left");
 		}
 
 		if(GUI.RepeatButton(new Rect(Screen.width - 150, Screen.height - 250, 100, 100 ), " Right ")) {
-			game.controlPlane("right");
+			game.control("right");
 		}
 
 		if(GUI.RepeatButton(new Rect(Screen.width - 250, Screen.height - 350, 100, 100 ), " Down ")) {
-			game.controlPlane("down");
+			game.control("down");
 		}
 
 		if(GUI.RepeatButton(new Rect(Screen.width - 250, Screen.height - 150, 100, 100 ), " Up ")) {
-			game.controlPlane("up");
+			game.control("up");
 		}
 
 
@@ -87,5 +76,10 @@ public class GUIScript : MonoBehaviour {
 
 	public void displayMessage(string message){
 		GUI.Label(new Rect(100, 100, 1397, 202), message, messagesStyle);
+	}
+
+	public void startGame(){
+		message = "Começou o jogo!";
+		showScore = true;
 	}
 }
