@@ -48,23 +48,31 @@ public class GUIScript : MonoBehaviour {
 			score = game.getScore();
 			displayScore (score);		
 		} else {
-			displayMessage ("Coloque os marcadores");
+			displayMessage ("Coloque o marcador da pista");
 		}
 
-		if(GUI.RepeatButton(new Rect(Screen.width - 350, Screen.height - 250, 100, 100 ), " Left ")) {
+		if(GUI.RepeatButton(new Rect(Screen.width - 350, Screen.height - 250, 100, 100 ), " ")) {
 			game.control("left");
 		}
 
-		if(GUI.RepeatButton(new Rect(Screen.width - 150, Screen.height - 250, 100, 100 ), " Right ")) {
+		if(GUI.RepeatButton(new Rect(Screen.width - 150, Screen.height - 250, 100, 100 ), " ")) {
 			game.control("right");
 		}
 
-		if(GUI.RepeatButton(new Rect(Screen.width - 250, Screen.height - 350, 100, 100 ), " Down ")) {
+		if(GUI.RepeatButton(new Rect(Screen.width - 250, Screen.height - 350, 100, 100 ), " ")) {
 			game.control("down");
 		}
 
-		if(GUI.RepeatButton(new Rect(Screen.width - 250, Screen.height - 150, 100, 100 ), " Up ")) {
+		if(GUI.RepeatButton(new Rect(Screen.width - 250, Screen.height - 150, 100, 100 ), " ")) {
 			game.control("up");
+		}
+
+		if(GUI.RepeatButton(new Rect(Screen.width - 550, Screen.height - 250, 100, 100 ), " ")) {
+			game.increaseSpeed(100);
+		}
+
+		if(GUI.RepeatButton(new Rect(Screen.width - 700, Screen.height - 250, 100, 100 ), " ")) {
+			game.increaseSpeed(-100);
 		}
 
 

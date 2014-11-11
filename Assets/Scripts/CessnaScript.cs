@@ -5,15 +5,17 @@ public class CessnaScript : MonoBehaviour {
 
 	public float speed;
 	public string state;
-	
+	public const float MAX_SPEED = 1500;
+	public const float MIN_SPEED = 300;
+
 	void Start () {
-		speed = 1200;
+		speed = 0;
 		state = "off";
 	}
 
 	void Update () {
 		if (state == "on") {
-			forward (speed, gameObject);
+			forward (speed);
 		}
 	}
 
@@ -22,32 +24,42 @@ public class CessnaScript : MonoBehaviour {
 		state = "on";
 	}
 	
-	public void forward(float speed, GameObject go){
-		go.transform.Translate (speed * Time.deltaTime, 0 , 0);
+	public void forward(float speed){
+		transform.Translate (speed * Time.deltaTime, 0 , 0);
 	}
 
-	public void up(float angle, GameObject go){
-		go.transform.Rotate (0, 0, angle * Time.deltaTime);
+	public void up(float angle){
+		transform.Rotate (0, 0, angle * Time.deltaTime);
 	}
 
-	public void down(float angle, GameObject go){
-		go.transform.Rotate (0, 0, -angle * Time.deltaTime);
+	public void down(float angle){
+		transform.Rotate (0, 0, -angle * Time.deltaTime);
 	}
 
-	public void left(float angle, GameObject go){
-		go.transform.Rotate (-angle * Time.deltaTime, 0, 0 );
+	public void left(float angle){
+		transform.Rotate (-angle * Time.deltaTime, 0, 0 );
 	}
 
-	public void right(float angle, GameObject go){
-		go.transform.Rotate (angle * Time.deltaTime, 0, 0 );
+	public void right(float angle){
+		transform.Rotate (angle * Time.deltaTime, 0, 0 );
 	}
 
-	public void headLeft(float angle, GameObject go){
-		go.transform.Rotate (0, -angle * Time.deltaTime, 0 );
+	public void headLeft(float angle){
+		transform.Rotate (0, -angle * Time.deltaTime, 0 );
 	}
 
-	public void headRight(float angle, GameObject go){
-		go.transform.Rotate (0, angle * Time.deltaTime, 0 );
+	public void headRight(float angle){
+		transform.Rotate (0, angle * Time.deltaTime, 0 );
+	}
+
+	public void increaseSpeed(float amount){
+		if ((speed + amount) > MAX_SPEED) {
+			speed = MAX_SPEED;
+		} else if ((speed + amount) < MIN_SPEED){
+			speed = MIN_SPEED;
+		} else{
+			speed = speed + amount;
+		}
 	}
 	
 

@@ -80,10 +80,8 @@
      <Compile Include="Assets\Scripts\GUIScript.cs" />
      <Compile Include="Assets\Scripts\GameScript.cs" />
      <Compile Include="Assets\Scripts\RunwayScript.cs" />
-     <None Include="Assets\Models\Small Airport\International Airport Scenery.fbx.txt" />
      <None Include="Assets\Qualcomm Augmented Reality\Shaders\VertexLitWithZ.shader" />
      <None Include="Assets\license_3rdpartynotice.txt" />
-     <None Include="Assets\Models\Small Airport\Maps\readme.txt" />
      <None Include="Assets\Qualcomm Augmented Reality\Shaders\RenderVideoBackground.shader" />
      <None Include="Assets\readme_SDK.txt" />
      <None Include="Assets\Editor\QCAR\WebcamProfiles\profiles.xml" />

@@ -1,4 +1,0 @@
-Object not supported : 0287
-Object not supported : 0115
-Object not supported : 1070
-Object not supported : 0898
