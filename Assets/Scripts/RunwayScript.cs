@@ -9,6 +9,6 @@ public class RunwayScript : MonoBehaviour {
 	}
 
 	void OnBecameVisible() {
-		game.startGame ();
+		game.runwayPlaced ();
 	}
 }

@@ -5,16 +5,12 @@ public class GameScript : MonoBehaviour{
 	GUIScript gui;
 	CessnaScript cessna;
 	int score;
-
+	string state;
 	void Start (){
 		gui = (GUIScript)GameObject.Find ("GUIScript").GetComponent (typeof(GUIScript));
 		cessna = (CessnaScript)GameObject.Find ("Cessna").GetComponent (typeof(CessnaScript));	
 		score = 0;
-	}
-
-	public void startGame (){
-		gui.startGame ();
-		cessna.turnOn ();
+		state = "putRunway";
 	}
 
 	public void control (string direction){
@@ -37,6 +33,26 @@ public class GameScript : MonoBehaviour{
 
 	public int getScore (){
 		return score;
+	}
+
+	public void addScore(int inc){
+		score = score + inc;
+	}
+
+	public void runwayPlaced(){
+		if(state == "putRunway"){
+			addScore (100);
+			gui.setMessage ("Coloque a torre de controlo");
+			state = "putTower";
+		}
+	}
+
+	public void towerPlaced(){
+		if(state == "putTower"){
+			addScore (200);
+			gui.setMessage ("Coloque o Bus");
+			state = "putBus";
+		}
 	}
 	
 }
