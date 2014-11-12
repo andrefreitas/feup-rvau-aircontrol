@@ -7,10 +7,12 @@ public class CessnaScript : MonoBehaviour {
 	public string state;
 	public const float MAX_SPEED = 1500;
 	public const float MIN_SPEED = 300;
+	GameScript game;
 
 	void Start () {
 		speed = 0;
 		state = "off";
+		game = (GameScript)  GameObject.Find("GameScript").GetComponent(typeof(GameScript));
 	}
 
 	void Update () {
@@ -62,5 +64,4 @@ public class CessnaScript : MonoBehaviour {
 		}
 	}
 	
-
 }

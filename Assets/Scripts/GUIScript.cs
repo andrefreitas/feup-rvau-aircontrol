@@ -10,6 +10,7 @@ public class GUIScript : MonoBehaviour {
 	public string message;
 	public int score;
 	public bool showControls;
+	string state;
 	GameScript game;
 	
 
@@ -44,10 +45,11 @@ public class GUIScript : MonoBehaviour {
 	
 	void OnGUI () {
 		score = game.getScore();
+		state = game.getState ();
 		displayScore (score);		
 		displayMessage (message);
 
-		if(showControls){
+		if(state == "flightPlane" || state == "driveBus"){
 			if(GUI.RepeatButton(new Rect(Screen.width - 350, Screen.height - 250, 100, 100 ), " ")) {
 				game.control("left");
 			}
@@ -56,12 +58,14 @@ public class GUIScript : MonoBehaviour {
 				game.control("right");
 			}
 
-			if(GUI.RepeatButton(new Rect(Screen.width - 250, Screen.height - 350, 100, 100 ), " ")) {
-				game.control("down");
-			}
+			if(state == "flightPlane"){
+				if(GUI.RepeatButton(new Rect(Screen.width - 250, Screen.height - 350, 100, 100 ), " ")) {
+					game.control("down");
+				}
 
-			if(GUI.RepeatButton(new Rect(Screen.width - 250, Screen.height - 150, 100, 100 ), " ")) {
-				game.control("up");
+				if(GUI.RepeatButton(new Rect(Screen.width - 250, Screen.height - 150, 100, 100 ), " ")) {
+					game.control("up");
+				}
 			}
 
 			if(GUI.RepeatButton(new Rect(Screen.width - 550, Screen.height - 250, 100, 100 ), " ")) {
