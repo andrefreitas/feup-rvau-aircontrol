@@ -1,53 +1,97 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class gameScript : MonoBehaviour
-{
-		string state = "waiting";
-		public bool isRunwayPlaced;
-		GUIScript gui;
-		GameObject runway;
-		CessnaScript cessna;
-		GameObject cessnago;
+public class GameScript : MonoBehaviour{
+	GUIScript gui;
+	CessnaScript cessna;
+	BusScript bus;
+	int score;
+	string state;
+	public AudioClip beep;
 
-		void Start ()
-		{
-				gui = (GUIScript)GameObject.Find ("GUI").GetComponent (typeof(GUIScript));
-				cessna = (CessnaScript)GameObject.Find ("Cessna").GetComponent (typeof(CessnaScript));
-				cessnago = GameObject.Find ("Cessna");	
-				runway = GameObject.Find ("SmallAirport");
-		}
-	
-		// Update is called once per frame
-		void Update ()
-		{
-	
-		}
+	void Start (){
+		gui = (GUIScript)GameObject.Find ("GUIScript").GetComponent (typeof(GUIScript));
+		cessna = (CessnaScript)GameObject.Find ("Cessna").GetComponent (typeof(CessnaScript));	
+		bus = (BusScript) GameObject.Find ("Bus").GetComponent (typeof(BusScript));	
 
-		public void startGame ()
-		{
-			state = "started";
-			gui.message = "Começou o jogo!";
-			gui.showScore = true;
-			startGame ();
-		isRunwayPlaced = true;
-		cessna.turnOn ();
-		
+		score = 0;
+		state = "putRunway";
 	}
-		public void control (string direction)
-		{
-				Debug.Log ("Plane control: " + direction);
 
-				if (direction == "left") {
-					cessna.headLeft(70, cessnago);
-				} else if (direction == "right") {
-					cessna.headRight (70, cessnago);
-				} else if (direction == "up") {
-					cessna.up (70, cessnago);
-				} else if (direction == "down") {
-					cessna.down (70, cessnago);
-				}
+	public void control (string direction){
+		Debug.Log ("Plane control: " + direction);
+
+		if(state == "flightPlane"){
+			if (direction == "left") {
+				cessna.headLeft (70);
+			} else if (direction == "right") {
+				cessna.headRight (70);
+			} else if (direction == "up") {
+				cessna.up (70);
+			} else if (direction == "down") {
+				cessna.down (70);
+			}
+		} else if(state == "driveBus"){
+			if (direction == "left") {
+				bus.left (20);
+			} else if (direction == "right") {
+				bus.right(20);
+			} 
 		}
+	}
 
+	public void increaseSpeed(int amount){
+		if(state == "driveBus"){
+			bus.increaseSpeed (20);
+		} else if(state == "flightPlane"){
+			cessna.increaseSpeed (amount);
+		}
+	}
 
+	public int getScore (){
+		return score;
+	}
+
+	public void addScore(int inc){
+		AudioSource.PlayClipAtPoint (beep, Camera.main.transform.position);
+		score = score + inc;
+	}
+
+	public void runwayPlaced(){
+		if(state == "putRunway"){
+			addScore (100);
+			gui.setMessage ("Coloque a torre de controlo");
+			state = "putTower";
+		}
+	}
+
+	public void towerPlaced(){
+		if(state == "putTower"){
+			addScore (200);
+			gui.setMessage ("Coloque o Bus");
+			state = "putBus";
+		}
+	}
+
+	public void busPlaced(){
+		if(state == "putBus"){
+			addScore (300);
+			gui.setMessage ("Conduza o Bus até o avião");
+			state = "driveBus";
+			bus.turnOn();
+		}
+	}
+
+	public void busArrived(){
+		if(state == "driveBus"){
+			addScore (500);
+			gui.setMessage ("Agora pilote o avião");
+			state = "flightPlane";
+			cessna.turnOn ();
+		}
+	}
+
+	public string getState(){
+		return state;
+	}
 }
